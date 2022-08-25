@@ -1,4 +1,4 @@
-package petfriends.reservation.dto;
+package petfriends.mypage.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

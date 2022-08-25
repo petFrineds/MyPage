@@ -1,4 +1,4 @@
-package petfriends.reservation.dto;
+package petfriends.mypage.dto;
 
 import lombok.Data;
 import petfriends.AbstractEvent;
@@ -19,5 +19,6 @@ public class Payed extends AbstractEvent {
     private Timestamp payDate;
     private Timestamp refundDate;
     private Double currentPoint;
+
 
 }

@@ -1,16 +1,17 @@
-package petfriends.reservation.dto;
+package petfriends.mypage.dto;
 
 import petfriends.AbstractEvent;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 
-public class WalkEnded extends AbstractEvent {
+public class WalkStarted extends AbstractEvent {
 
     private Long id;
+    
 
     private String walkStartDate;		// 산책 시작 일시분(실제)
     private String walkEndDate;			// 산책 종료 일시분(실제)
-	
+    
 	@Enumerated(EnumType.STRING)
 	private SmsStatus smsStatus;		// SMS 발송 상태 (START, END)
 	
@@ -18,7 +19,7 @@ public class WalkEnded extends AbstractEvent {
     private String userId;				// 회원ID
     private String dogWalkerId;			// 도그워커ID
 
-    public WalkEnded(){
+    public WalkStarted(){
         super();
     }
 
@@ -78,5 +79,6 @@ public class WalkEnded extends AbstractEvent {
 		this.dogWalkerId = dogWalkerId;
 	}
 
-
+	
+	
 }

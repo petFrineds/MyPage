@@ -2,12 +2,12 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: reservation-backend
+  name: mypage-backend
   annotations:
-    alb.ingress.kubernetes.io/healthcheck-path: "/reservations"
+    alb.ingress.kubernetes.io/healthcheck-path: "/mypages"
 spec:
   selector:
-    app:  reservation-backend
+    app:  mypage-backend
   type: NodePort
   ports:
     - port: 8080

@@ -11,9 +11,9 @@ import petfriends.config.KafkaProcessor;
 @SpringBootApplication
 @EnableBinding(KafkaProcessor.class)
 @EnableFeignClients
-public class ReservationApplication {
+public class MyPageApplication {
     public static ApplicationContext applicationContext;
     public static void main(String[] args) {
-        applicationContext = SpringApplication.run(ReservationApplication.class, args);
+        applicationContext = SpringApplication.run(MyPageApplication.class, args);
     }
 }

@@ -1,9 +1,7 @@
-package petfriends.reservation.dto;
+package petfriends.mypage.dto;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
 import petfriends.AbstractEvent;
 
-import javax.persistence.Column;
 import java.util.Date;
 
 public class StatusUpdated extends AbstractEvent {
