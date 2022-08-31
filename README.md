@@ -22,7 +22,6 @@ user_id NVARCHAR(50) DEFAULT NULL,
 user_name NVARCHAR(50) DEFAULT NULL,
 amount DOUBLE NULL DEFAULT NULL,
 
-pay_gubun NVARCHAR(50) DEFAULT NULL,
 pay_type NVARCHAR(50) DEFAULT NULL,
 
 walk_start_date DATETIME,
@@ -40,21 +39,18 @@ values (20, "2022-08-22 19:00:00", "2022-08-22 21:00:00", 1, "mimi_id", "mimi", 
 ---------------------------------------------------  
 2. 배포 방법
 ---------------------------------------------------  
-ec2에 reservation 테이블 만들기, 데이터 insert 
-git git clone https://github.com/petFrineds/Reservation.git
+git clone https://github.com/petFrineds/MyPage.git
 mvn install
-aws ecr create-repository --repository-name reservation-backend -- image-scanning-configuration scanOnPush=true --region ${AWS_REGION}
-docker build -t reservation-backend . -v /etc/localtime:/etc/localtime:ro -e TZ=Asia/Seoul
-docker run ... -v /etc/localtime:/etc/localtime:ro -e TZ=Asia/Seoul ...
-
-docker tag reservation-backend:latest 811288377093.dkr.ecr.$AWS_REGION.amazonaws.com/reservation-backend:latest
-docker push 811288377093.dkr.ecr.us-west-2.amazonaws.com/reservation-backend:latest
+aws ecr create-repository --repository-name mypage-backend --image-scanning-configuration scanOnPush=true --region us-west-2
+docker build -t mypage-backend .
+docker tag mypage-backend:latest 811288377093.dkr.ecr.$AWS_REGION.amazonaws.com/mypage-backend:latest
+docker push 811288377093.dkr.ecr.us-west-2.amazonaws.com/mypage-backend:latest
 aws ecr get-login-password --region $AWS_REGION | docker login --username AWS --password-stdin 811288377093.dkr.ecr.us-west-2.amazonaws.com/
-cd manifests
--- 여기서 부터는 ec2-user 사경
-kubectl apply -f reservation-deployment.yaml
+
+-- 여기서 부터는 ec2-user 사용
+kubectl apply -f manifests/mypage-deployment.yaml
 kubectl get deploy
-kubectl apply -f reservation-service.yaml
+kubectl apply -f manifests/mypage-service.yaml
 kubectl get service
 kubectl get ingress
 

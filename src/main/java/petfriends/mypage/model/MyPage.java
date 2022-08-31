@@ -56,16 +56,10 @@ public class MyPage {
     @Column(name="status")
     private ReservationStatus status; // 1-요청중, 2-결재완료, 3-산책시작, 4-산책종료, 5-포인트지급, 10-결재취소
 
-
-
-    /* 결재 */
-    @Enumerated(EnumType.STRING)
-    @Column(name = "pay_gubun")
-    private PayGubun payGubun;
-
     @Enumerated(EnumType.STRING)
     @Column(name = "pay_type")
     private PayType payType;
+
 
 
 

@@ -6,8 +6,7 @@ import petfriends.AbstractEvent;
 import java.sql.Timestamp;
 
 @Data
-public class Payed extends AbstractEvent {
-
+public class Refunded extends AbstractEvent {
 
     private Long id; //pay_id
     private Long reservedId;

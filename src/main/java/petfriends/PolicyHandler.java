@@ -76,7 +76,6 @@ public class PolicyHandler{
 
                 MyPage mypage = mypageOptional.get();
                 mypage.setStatus(ReservationStatus.PAYED);
-                mypage.setPayGubun(payed.getPayGubun());
                 mypage.setPayType(payed.getPayType());
                 mypage.setAmount(payed.getAmount());
                 mypageRepository.save(mypage);
@@ -112,7 +111,7 @@ public class PolicyHandler{
         SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm");
 
         if(walkEnded.isMe()){
-            Optional<MyPage> mypageOptional = mypageRepository.findById(walkEnded.getReservedId());
+            Optional<MyPage> mypageOptional = mypageRepository.findByReservedId(walkEnded.getReservedId());
             if(mypageOptional.isPresent()) {
                 MyPage mypage = mypageOptional.get();
                 mypage.setStatus(ReservationStatus.END); // 산책종료
@@ -129,6 +128,26 @@ public class PolicyHandler{
 
 
             //에약 취소 추가 해야함
+        }
+    }
+
+
+    @StreamListener(KafkaProcessor.INPUT)
+    public void wheneverRefunded_(@Payload Refunded refunded) throws ParseException {
+        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm");
+
+        if(refunded.isMe()){
+            Optional<MyPage> mypageOptional = mypageRepository.findByReservedId(refunded.getReservedId());
+            if(mypageOptional.isPresent()) {
+                MyPage mypage = mypageOptional.get();
+                mypage.setAmount(0.0);
+                mypage.setStatus(ReservationStatus.CANCEL);
+                LocalDateTime current = LocalDateTime.now();
+                mypage.setUpdDate(java.sql.Timestamp.valueOf(current));
+
+                mypageRepository.save(mypage);
+
+            }
         }
     }
 }
