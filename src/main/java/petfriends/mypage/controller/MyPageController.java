@@ -30,24 +30,18 @@ import javax.transaction.Transactional;
 
 
 	@RequestMapping(method= RequestMethod.GET, path="/mypages/users/{userId}")
-	public ResponseEntity<List<MyPage>> findAllByUserId(@PathVariable String userId){
+	public List<MyPage> findAllByUserId(@PathVariable String userId){
 		List<MyPage> mypages =  mypageService.findAllByUserId(userId);
-		if(!mypages.isEmpty()){
-			return new ResponseEntity<List<MyPage>>(mypages, HttpStatus.OK);
-		}
-		//내용 없을 때
-		return new ResponseEntity<List<MyPage>>(mypages, HttpStatus.NO_CONTENT);
+
+		return mypages;
 	}
 
 
 	@RequestMapping(method= RequestMethod.GET, path="/mypages/dogwalker/{dogwalkerId}")
-	public ResponseEntity<List<MyPage>> findAllByDogwalkerId(@PathVariable String dogwalkerId){
+	public List<MyPage> findAllByDogwalkerId(@PathVariable String dogwalkerId){
 		List<MyPage> mypages =  mypageService.findAllByDogwalkerId(dogwalkerId);
-		if(!mypages.isEmpty()){
-			return new ResponseEntity<List<MyPage>>(mypages, HttpStatus.OK);
-		}
-		//내용 없을 때
-		return new ResponseEntity<List<MyPage>>(mypages, HttpStatus.NO_CONTENT);
+
+		return mypages;
 	}
 
 }
