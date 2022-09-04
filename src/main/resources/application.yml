@@ -1,6 +1,7 @@
+
+---
 server:
   port: 8085
----
 
 spring:
   profiles: default
@@ -54,6 +55,9 @@ api:
 jwt:
   secret: bHYz66W8IOychO2VnCBwZXRmcmllbmRzIOydh
 ---
+
+server:
+  port: 8080
 
 spring:
   profiles: docker
