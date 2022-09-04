@@ -7,5 +7,7 @@ public enum ReservationStatus {
         END,     //산책종료 : 3
 
         POINT,   // 포인트 지급 : 4
-        CANCEL   // 예약취소 : 5
+        CANCEL,   // 예약취소 : 5
+
+        DAILY_WRITED // 일지 작성 : 6 
  }

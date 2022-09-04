@@ -94,6 +94,7 @@ public class PolicyHandler{
             if(mypageOptional.isPresent()) {
                 MyPage mypage = mypageOptional.get();
                 mypage.setStatus(ReservationStatus.START); // 산책시작
+                mypage.setWalkId(walkStarted.getId()); //walkId 추가
 
                 Date walkStartDate = format.parse(walkStarted.getWalkStartDate());
                 mypage.setWalkStartDate(walkStartDate);
@@ -106,6 +107,7 @@ public class PolicyHandler{
         }
     }
 
+    //산책 종료
     @StreamListener(KafkaProcessor.INPUT)
     public void wheneverWalkEnded_(@Payload WalkEnded walkEnded) throws ParseException {
         SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm");
@@ -125,13 +127,10 @@ public class PolicyHandler{
                 mypageRepository.save(mypage);
 
             }
-
-
-            //에약 취소 추가 해야함
-        }
+       }
     }
 
-
+    //결재 취소
     @StreamListener(KafkaProcessor.INPUT)
     public void wheneverRefunded_(@Payload Refunded refunded) throws ParseException {
         SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm");
@@ -150,4 +149,26 @@ public class PolicyHandler{
             }
         }
     }
+
+
+    //산책 종료
+    @StreamListener(KafkaProcessor.INPUT)
+    public void wheneverDailyWrited_(@Payload DailyWrited dailyWrited) throws ParseException {
+        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm");
+
+        if(dailyWrited.isMe()){
+            Optional<MyPage> mypageOptional = mypageRepository.findByWalkId(dailyWrited.getWalkId());
+
+            if(mypageOptional.isPresent()) {
+                MyPage mypage = mypageOptional.get();
+                mypage.setStatus(ReservationStatus.DAILY_WRITED); // 일지 작성
+                LocalDateTime current = LocalDateTime.now();
+                mypage.setUpdDate(java.sql.Timestamp.valueOf(current));
+
+                mypageRepository.save(mypage);
+
+            }
+        }
+    }
+
 }

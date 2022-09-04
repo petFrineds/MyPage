@@ -60,9 +60,8 @@ public class MyPage {
     @Column(name = "pay_type")
     private PayType payType;
 
-
-
-
+    @Column(name = "walk_id")
+    private Long walkId;
     /* 산책 */
     @Column(name = "walk_start_date")
     private Date walkStartDate;
@@ -70,8 +69,6 @@ public class MyPage {
     //산책시작
     @Column(name = "walk_end_date")
     private Date walkEndDate;
-
-
 
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     @Column(name="reg_date")

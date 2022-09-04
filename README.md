@@ -24,6 +24,7 @@ amount DOUBLE NULL DEFAULT NULL,
 
 pay_type NVARCHAR(50) DEFAULT NULL,
 
+walk_id BIGINT(20),
 walk_start_date DATETIME,
 walk_end_date DATETIME,
 

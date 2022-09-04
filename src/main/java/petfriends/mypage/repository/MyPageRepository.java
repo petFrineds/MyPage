@@ -15,5 +15,9 @@ public interface MyPageRepository extends CrudRepository<MyPage, Long> {
     List<MyPage> findAllByDogwalkerId(String dogwalkerId);
     Optional<MyPage> findByReservedId(Long reservedId);
 
+    Optional<MyPage> findByWalkId(Long walkId);
     MyPage save(MyPage myPage);
+
+
+
 }
