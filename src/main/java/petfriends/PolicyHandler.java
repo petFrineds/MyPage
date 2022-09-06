@@ -119,7 +119,7 @@ public class PolicyHandler{
                 mypage.setStatus(ReservationStatus.END); // 산책종료
 
                 Date walkEndDate = format.parse(walkEnded.getWalkEndDate());
-                mypage.setWalkStartDate(walkEndDate);
+                mypage.setWalkEndDate(walkEndDate);
 
                 LocalDateTime current = LocalDateTime.now();
                 mypage.setUpdDate(java.sql.Timestamp.valueOf(current));
