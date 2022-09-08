@@ -73,7 +73,7 @@ public class MyPage {
     @Column(name = "walk_end_date")
     private Date walkEndDate;
 
-    @JsonFormat(pattern = "yyyy-MM-dd HH:mm")
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     @Column(name="reg_date")
     private Date regDate;
 
