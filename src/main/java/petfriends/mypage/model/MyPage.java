@@ -78,6 +78,10 @@ public class MyPage {
     @Column(name="upd_date")
     private Date updDate;
 
+
+    @Transient
+    private int sortSeq;
+
     @PostPersist
     public void onPostPersist(){
         //MyPage Post

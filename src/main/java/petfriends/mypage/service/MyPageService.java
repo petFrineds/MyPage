@@ -1,8 +1,8 @@
 package petfriends.mypage.service;
 
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
 
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -10,6 +10,7 @@ import petfriends.mypage.model.MyPage;
 import petfriends.mypage.repository.MyPageRepository;
 
 @Service
+@Slf4j
 public class MyPageService {
 	 
 	 @Autowired
@@ -17,8 +18,10 @@ public class MyPageService {
 
 	public List<MyPage> findAllByUserId(String userId) {
 
-		return mypageRepository.findAllByUserId(userId);
+		List<MyPage> myPages = mypageRepository.findAllByUserId(userId);
+		return myPages;
 	}
+
 
 	public List<MyPage> findAllByDogwalkerId(String dogwalkerId) {
 

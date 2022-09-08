@@ -33,9 +33,20 @@ upd_date DATETIME
 ) COLLATE='utf8mb4_general_ci' ENGINE=InnoDB ;
  
 insert샘플:
-insert into mypage (reserved_id, start_time, end_time, dogwalker_schedule_id, dogwalker_id, dogwalker_name, user_id, user_name, amount, status, pay_gubun, pay_type, walk_start_date, walk_end_date) 
-values (20, "2022-08-22 19:00:00", "2022-08-22 21:00:00", 1, "mimi_id", "mimi", "geny_id", "geny",  40000, "REQUEST", "PAY", "CARD", "2022-08-22 18:50:00", "2022-08-22 22:03:00");
+insert into mypage (id, reserved_id, start_time, end_time, dogwalker_schedule_id, dogwalker_id, dogwalker_name, user_id, user_name, amount, status, pay_type, walk_start_date, walk_end_date) 
+values (2, 20, "2022-08-22 19:00:00", "2022-08-22 21:00:00", 1, "mimi_id", "mimi", "geny_id", "geny",  40000, "REQUEST", "CARD", "2022-08-22 18:50:00", "2022-08-22 22:03:00");
 
+insert into mypage (id, reserved_id, start_time, end_time, dogwalker_schedule_id, dogwalker_id, dogwalker_name, user_id, user_name, amount, status, pay_type, walk_start_date, walk_end_date)
+values (3, 20, "2022-08-22 19:00:00", "2022-08-22 21:00:00", 1, "mimi_id", "mimi", "geny_id", "geny",  40000, "PAYED", "CARD", "2022-08-22 18:50:00", "2022-08-22 22:03:00");
+
+insert into mypage (id, reserved_id, start_time, end_time, dogwalker_schedule_id, dogwalker_id, dogwalker_name, user_id, user_name, amount, status, pay_type, walk_start_date, walk_end_date)
+values (4, 20, "2022-08-22 19:00:00", "2022-08-22 21:00:00", 1, "mimi_id", "mimi", "geny_id", "geny",  40000, "START", "CARD", "2022-08-22 18:50:00", "2022-08-22 22:03:00");
+
+insert into mypage (id, reserved_id, start_time, end_time, dogwalker_schedule_id, dogwalker_id, dogwalker_name, user_id, user_name, amount, status, pay_type, walk_start_date, walk_end_date)
+values (5, 20, "2022-08-22 19:00:00", "2022-08-22 21:00:00", 1, "mimi_id", "mimi", "geny_id", "geny",  40000, "END", "CARD", "2022-08-22 18:50:00", "2022-08-22 22:03:00");
+
+insert into mypage (id, reserved_id, start_time, end_time, dogwalker_schedule_id, dogwalker_id, dogwalker_name, user_id, user_name, amount, status, pay_type, walk_start_date, walk_end_date)
+values (6, 20, "2022-08-22 19:00:00", "2022-08-22 21:00:00", 1, "mimi_id", "mimi", "geny_id", "geny",  40000, "DAILY_WRITED", "CARD", "2022-08-22 18:50:00", "2022-08-22 22:03:00");
 
 ---------------------------------------------------  
 2. 배포 방법
