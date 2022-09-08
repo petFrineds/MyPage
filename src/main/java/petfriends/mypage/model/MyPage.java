@@ -62,15 +62,18 @@ public class MyPage {
 
     @Column(name = "walk_id")
     private Long walkId;
-    /* 산책 */
+
+    /* 산책시작*/
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm")
     @Column(name = "walk_start_date")
     private Date walkStartDate;
 
-    //산책시작
+    /* 산책종료*/
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm")
     @Column(name = "walk_end_date")
     private Date walkEndDate;
 
-    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm")
     @Column(name="reg_date")
     private Date regDate;
 
